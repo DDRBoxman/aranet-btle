@@ -27,9 +27,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
 ```
 
 ### Roadmap:
-[x] Connect to one device
-[x] Get readings
-[] Allow connecting to multiple devices
-[] Connect to a specific device
-[] Fetch sensor history data
-[] Better management of the btle code so we can play nice with other libraries.
+- [x] Connect to one device
+- [x] Get readings
+- [ ] Allow connecting to multiple devices
+- [ ] Connect to a specific device
+- [ ] Fetch sensor history data
+- [ ] Better management of the btle code so we can play nice with other libraries.
