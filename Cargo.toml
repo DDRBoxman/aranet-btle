@@ -1,0 +1,16 @@
+[package]
+name = "aranet-btle"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/DDRBoxman/aranet-btle"
+description = "A simple library to get readings from an Aranet4 co2 device"
+
+[dependencies]
+btleplug = "0.11"
+uuid = "1.5"
+byteorder = "1"
+thiserror = "1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
