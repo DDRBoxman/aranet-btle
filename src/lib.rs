@@ -68,7 +68,7 @@ pub struct SensorData {
 }
 
 #[derive(Error, Debug)]
-pub enum ReadError {
+pub enum DeviceError {
     #[error(transparent)]
     IOError(#[from] std::io::Error),
     #[error(transparent)]
@@ -76,7 +76,7 @@ pub enum ReadError {
 }
 
 impl Aranet4 {
-    pub async fn read_data(&self) ->Result<SensorData, ReadError> {
+    pub async fn read_data(&self) -> Result<SensorData, DeviceError> {
         let res = self.peripheral.read(&self.current_reading_char).await?;
     
         let mut rdr = Cursor::new(res);
@@ -101,6 +101,18 @@ impl Aranet4 {
                 age,
             }
         )
+    }
+
+    pub async fn reconnect(&self) -> Result<(), DeviceError> {
+        self.peripheral.connect().await?;
+
+        Ok(())
+    }
+
+    pub async fn disconnect(&self) -> Result<(), DeviceError> {
+        self.peripheral.disconnect().await?;
+
+        Ok(())
     }
 }
 
